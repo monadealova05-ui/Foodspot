@@ -15,43 +15,56 @@ document.addEventListener("click", function (e) {
 
 // Fetching Data
 
-const gistUrl = "https://gist.githubusercontent.com/fanhdt/c79a84879456e2832d88bf3e1020895a/raw/0c38afd136e1176bdc6de54e06ee3a1bd5f6049d/course.json";
+const foods = [
+  {
+    category: "Makanan Indonesia",
+    title: "Nasi Goreng",
+    description: "Nasi goreng gurih dan cocok dinikmati kapan saja.",
+    price: "Rp 20.000",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
+  },
+  {
+    category: "Makanan Indonesia",
+    title: "Mie Ayam",
+    description: "Mie dengan topping ayam yang lezat dan mengenyangkan.",
+    price: "Rp 18.000",
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+  },
+  {
+    category: "Dessert",
+    title: "Pancake",
+    description: "Pancake lembut dengan topping manis yang menggugah selera.",
+    price: "Rp 25.000",
+    image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93",
+  },
+  {
+    category: "Minuman",
+    title: "Es Kopi Susu",
+    description: "Kopi susu segar untuk menemani waktu santaimu.",
+    price: "Rp 15.000",
+    image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735",
+  },
+];
 
-async function getCourses() {
-  try {
-    const response = await fetch(gistUrl);
-    if (!response.ok) {
-      throw new Error("Gagal mengambil data");
-    }
-    const courses = await response.json();
-    displayCourses(courses);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
+function displayFoods(foods) {
+  const foodList = document.querySelector("#course-list");
 
-function displayCourses(courses) {
-  const courseList = document.querySelector("#course-list");
+  foodList.innerHTML = "";
 
-  courseList.innerHTML = "";
-
-  courses.forEach((course) => {
-    courseList.innerHTML += `
-    <div class="menu-card">
-        <img src="${course.image}"></img>
+  foods.forEach((food) => {
+    foodList.innerHTML += `
+      <div class="menu-card">
+        <img src="${food.image}" alt="${food.title}">
         <div class="menu-card-content">
-            <span>${course.category}</span>
-            <h3>${course.title}</h3>
-            <p>${course.description}</p>
-            <small>Mentor: ${course.mentor}</small>
-            <strong>${course.price}</strong>
-            <a href="course.html?slug=${course.slug}">
-            Lihat Kelas
-            </a>
-        </div>
-    </div>
+          <span>${food.category}</span>
+          <h3>${food.title}</h3>
+          <p>${food.description}</p>
+          <small>Rekomendasi Foodspot</small>
+          <strong>${food.price}</strong>
+<a href="food.html">Lihat Rekomendasi</a>
+      </div>
     `;
   });
 }
 
-getCourses();
+displayFoods(foods);

@@ -491,3 +491,35 @@ footer .credit a {
     height: 200px;
   }
 }
+.detail-food {
+  padding: 120px 7% 60px;
+  min-height: 80vh;
+}
+
+.detail-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.detail-content h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.food-category {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.detail-content p {
+  line-height: 1.8;
+}
+
+.detail-content strong {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.detail-content a {
+  text-decoration: none;
+}
